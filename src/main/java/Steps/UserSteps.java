@@ -1,8 +1,8 @@
 package Steps;
 import Andpoints.ApiEndpoint;
-import POJO.UserCreateAccount;
-import POJO.UserLogin;
-import POJO.UserLoginResponse;
+import pojo.UserCreateAccount;
+import pojo.UserLogin;
+import pojo.UserLoginResponse;
 import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;

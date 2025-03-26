@@ -1,5 +1,5 @@
-import POJO.UserCreateAccount;
-import POJO.UserLogin;
+import pojo.UserCreateAccount;
+import pojo.UserLogin;
 import Steps.UserSteps;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;

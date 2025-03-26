@@ -1,5 +1,5 @@
-import POJO.UserCreateAccount;
-import POJO.UserLogin;
+import pojo.UserCreateAccount;
+import pojo.UserLogin;
 import Steps.OrderSteps;
 import Steps.UserSteps;
 import io.qameta.allure.Description;
@@ -17,7 +17,6 @@ public class GetOrderUserTest {
     public static String email = "bry4n24@yandex.ru";
     public static String password = "asdf1234";
     public static String name = "Антон";
-    private boolean skipDeleteUser = false;
 
     @After
     public  void deleteUser() {
@@ -30,7 +29,6 @@ public class GetOrderUserTest {
     @DisplayName("Получение списка заказов без авторизации")
     @Description("Проверка не возможности получения списка заказов без авторизации")
     public void orderListWithoutAuthorization() {
-        skipDeleteUser = true;
         OrderSteps orderSteps = new OrderSteps();
         orderSteps.orderList()
                 .assertThat().body("success", equalTo(false))

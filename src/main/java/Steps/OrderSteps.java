@@ -1,14 +1,18 @@
 package Steps;
 
-import POJO.OrderCreate;
-import POJO.UserLogin;
-import POJO.UserLoginResponse;
+import io.restassured.http.ContentType;
+import pojo.OrderCreate;
+import pojo.UserLogin;
+import pojo.UserLoginResponse;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 
-import static Andpoints.ApiEndpoint.ORDERS;
+import java.util.List;
+
+import static Andpoints.ApiEndpoint.*;
 import static Steps.UserSteps.requestSpecification;
+import static io.restassured.RestAssured.given;
 
 public class OrderSteps {
 
@@ -49,5 +53,15 @@ public class OrderSteps {
                 .header("Authorization", accessToken)
                 .get(ORDERS)
                 .then();
+    }
+
+    public List<String> getIngredients() {
+        return given().log().all()
+                .contentType(ContentType.JSON)
+                .baseUri(BASE_URL)
+                .when()
+                .get(INGREDIENTS)
+                .then().log().all()
+                .extract().jsonPath().getList("data._id");
     }
 }
